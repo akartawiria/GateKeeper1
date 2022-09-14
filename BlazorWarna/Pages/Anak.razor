@@ -1,0 +1,50 @@
+﻿<p>
+    <button @onclick="@OnClickCallback">
+        Trigger a Parent component method
+    </button>
+    <div>
+    
+    <input type="checkbox" id="ck" @onchange="Dodol" />
+    <label for="ck"> Check Status </label>
+    </div>
+</p>
+
+<li><strong>pass from Orang Tua : </strong> @Title</li>
+<li><strong>pass from Orang Tua : </strong> @ChildContent</li>
+<li>@n</li>
+<hr />
+
+@code {
+        [Parameter]
+        public string? Title { get; set; } 
+
+        [Parameter]
+        public RenderFragment? ChildContent { get; set; }
+
+        [Parameter]
+        public EventCallback<MouseEventArgs> OnClickCallback { get; set; }
+
+        [Parameter]
+        public EventCallback<bool> OnClickCallbackK { get; set; } 
+       
+        int? a = null;
+        bool n;
+        protected async Task Dodol(ChangeEventArgs b)
+        {
+            n = Convert.ToBoolean(b.Value);
+            a ??= -1;
+      
+        //if (b.Value != null)
+        await OnClickCallbackK.InvokeAsync(Convert.ToBoolean(b.Value));
+        }
+
+    void coba()
+    {
+        int? a = null;     
+        a ??= -1;
+      
+        Console.WriteLine($"hasilnya :{a}");
+    }
+}   
+
+

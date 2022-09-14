@@ -1,0 +1,52 @@
+﻿@page "/Oji"
+
+@if (oji == null)
+{
+    <p> Mohon Tunggu </p>
+}
+else
+{
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  @foreach (var item in oji)
+  {
+   <div class="col">
+    <div class="card">
+    <img src="@($"iOzzy/IMG{@item}.jpg")" class="card-img-top" alt="@item" width="400" height="400">
+    <div class="card-body">
+      <h5 class="card-title"> <b>Menu Makanan</b></h5>
+      <p class="card-text">Rasa Yakyniku ala Jepang @item</p>
+      <button class="btn btn-primary">Order</button>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+    </div>
+   </div>
+  }
+</div>
+}
+
+
+
+
+
+@code {
+    List<int>? oji;
+  
+    protected override void OnInitialized()
+    {
+        oji = new()
+        {
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+        };
+
+   
+    }
+}

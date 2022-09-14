@@ -1,0 +1,27 @@
+﻿@page "/orangtua"
+
+<h1>Orang Tua dan Anak example</h1>
+
+<Anak Title="Panel Title from Parent" OnClickCallback="@ShowMessage" OnClickCallbackK="@SM">
+   Ini Contoh kirim dari Ortu ke Anak dan dari Anak kirim kembali hasil check box nya
+</Anak>
+
+<p>@message</p>
+<p>@msg</p>
+
+
+@code {
+    private string? message;
+    bool? msg;
+
+    private void ShowMessage(MouseEventArgs e)
+    {
+        message = $"Blaze a new trail with Blazor! ({e.ScreenX}:{e.ScreenY})";
+    }
+
+    private void SM (bool h)    
+    {      
+        msg = h;
+      
+    }
+}

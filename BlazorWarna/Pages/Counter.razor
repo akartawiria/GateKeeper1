@@ -1,0 +1,47 @@
+﻿@page "/counter"
+@page "/alex/{id}"
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+<p>@id</p>
+
+<div class="row">
+    <div class="col-auto">
+        <button class="btn btn-primary" @onclick="IncrementCount">@leb</button>
+    </div>
+    <div class="col-md-3">
+        <button class="btn btn-outline-secondary" @onclick="Klik"> Ganti Nama Button</button>
+    </div>
+</div>
+@if (a)
+{
+<div class="spinner-border" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+}
+
+@code {
+    [Parameter]
+    public string? id { get; set; }
+    string? leb = "Click Me";
+    private int currentCount = 0;
+    Boolean a = false;
+
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+    void Klik()
+    {
+        leb = "Tekan saya";
+        if (a == false)
+            a = true;
+        else
+            a = false;
+    }
+
+}

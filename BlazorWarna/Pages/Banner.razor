@@ -1,0 +1,23 @@
+﻿<div class="col-12 pt-1 rounded border"
+     style="background-color: lightgray; cursor: pointer"
+     @onclick="AdClicked">
+    <img class="float-left mr-3 mt-3 align-items-center" src="@ImageLink" />
+    <h5><strong>@Title</strong></h5>
+    <p style="font-size: small">
+        @ChildContent
+    </p>
+</div>
+ 
+@code {
+    [Parameter]
+    public string? Title { get; set; }
+ 
+    [Parameter]
+    public string? ImageLink { get; set; }
+ 
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+ 
+    [Parameter]
+    public EventCallback AdClicked { get; set; }
+}

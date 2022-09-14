@@ -1,0 +1,35 @@
+﻿@*@using Microsoft.Extensions.Logging*@
+@inject ILogger<RefParent> logger
+
+<div class="container-fluid">
+    <div class="col-5">
+    
+        hello there......@n
+     <button class="btn btn-primary" @onclick="() => n++  " >
+         Hasilnya
+     </button>
+
+     
+     </div>
+</div>
+
+<input type="checkbox" />
+
+<p>@v</p>   
+
+
+@code {
+    int n;
+    
+    public bool v { get; set; }
+    public void ChildMethod(int value)
+    {
+        n = value;
+        logger.LogInformation("Received {Value} in ChildMethod", value);
+        logger.LogWarning(value.ToString());
+    }
+    public void centang(bool c)
+    {
+        v = c;
+    }
+}

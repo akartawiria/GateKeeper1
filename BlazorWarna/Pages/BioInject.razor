@@ -1,0 +1,81 @@
+﻿@page "/bioinject"
+@inject IBioServices _ser
+@*@inject IBetterBioSer _bet*@
+@using BlazorWarna.Modal
+
+<h3>BioInject</h3>
+<p>
+<input type="text" placeholder="Nama Depan" @bind-value="bioO.Nama1"/>
+<input type="text" placeholder="Nama Belakang" @bind-value="bioO.Nama2"/>
+<input type="text" placeholder="Alamat" @bind-value="bioO.Alamat"/>
+
+   @* <input type="text" placeholder="Nama Depan" @bind-value="n1" />
+    <input type="text" placeholder="Nama Belakang" @bind-value="n2" />
+    <input type="text" placeholder="Alamat" @bind-value="al" />*@
+
+<button class="btn-primary" @onclick="Tambah" > Tambah </button>
+</p>
+
+
+<h2>@_ser.Coba</h2>
+<h2>@_bet?.Coba[0] @_bet?.Coba[1]</h2>
+<h3>@vv</h3>
+
+<h3>@b</h3>
+
+@if ((_ser.BiodataList?.Count == 0))
+{
+    <b>Tidak ada Data</b>
+}
+else
+{
+    @if (_ser.BiodataList != null)
+    {
+
+        @foreach (var item in _ser.BiodataList)
+        {
+            <li>@item.Nama1 @item.Nama2</li>
+            <li>@item.Alamat</li>
+
+        }
+
+    }
+
+}
+
+@code {
+    [Inject]
+    public IBetterBioSer? _bet { get; set; }
+    public Biodata bioO = new();
+
+    string? n1, n2, al;
+
+    public string? xx { get; set; }
+    string? vv ,ww ;
+
+    int b = (1 != 0 ? 1 : 0); // ini adalah if inline : jika 1 tidak sama dengan 0 maka ambil angka 1 jika tidak ambil angka 0 
+
+    void Tambah()
+    {
+        vv ??= "alex"; // jika vv adalah null maka masukkan "alex" ke vv 
+
+        ww = xx ?? "This is me !"; //jika xx adalah null (xx itu kan null) , maka yg diambil "this is me" masukkan ke ww
+
+        //# use 1:
+        _ser.BiodataList?.Add(bioO);
+        bioO = new();
+        // _ser.BiodataList?.Add(new Biodata() { Nama1 = n1, Nama2 = n2, Alamat = al });
+        
+        //# Or use 2 : 
+            //Biodata bio = new()
+            //{
+              
+            //   Nama1 = n1,
+            //   Nama2 = n2,
+            //   Alamat = al,
+            //};
+            //_ser.AddBio(bio);
+
+        n1 = ""; n2 = ""; al = "";
+    }
+}

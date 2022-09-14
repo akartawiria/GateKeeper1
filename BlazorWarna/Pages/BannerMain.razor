@@ -1,0 +1,21 @@
+﻿@page "/banner"
+@inject NavigationManager nav
+ 
+<h1>Welcome to Blazor How-To!</h1>
+ 
+<p>Welcome to your new app.</p>
+ 
+<div class="col-lg-8 offset-lg-2 col-12 mt-5">
+    <Banner ImageLink = "/icon-192.png" AdClicked="@OnAdClicked"
+              Title="My Blazor Ad!">
+        Learn about the <strong>.NET 5</strong> technology for building single page applications <i>(SPAs)</i>.
+        Transfer your knowledge of C# and .NET into the exciting realm of frontend development.
+    </Banner>
+</div>
+ 
+@code {
+    private void OnAdClicked()
+    {
+        nav.NavigateTo("https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-5.0");
+    }
+}

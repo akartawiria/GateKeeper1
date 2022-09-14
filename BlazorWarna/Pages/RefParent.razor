@@ -1,0 +1,17 @@
+﻿@page "/ref"
+
+<button @onclick="@(() => childComponent?.ChildMethod(5))">
+    Call <code>RefChild.ChildMethod</code> with an argument of 5
+</button>
+
+<button @onclick="dodol">Centang</button>
+<RefChild @ref="childComponent" />
+
+@code {
+    private RefChild? childComponent;
+
+    private void dodol ()
+    {
+       childComponent?.centang(true);
+    }
+}
